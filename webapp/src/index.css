@@ -1,0 +1,31 @@
+:root[data-theme='light'] {
+    --text: #050406;
+    --background: #fdfcfd;
+    --primary: #614979;
+    --secondary: #dbd2e4;
+    --accent: #765893;
+}
+
+:root[data-theme='dark'] {
+    --text: #faf9fb;
+    --background: #030203;
+    --primary: #9e86b6;
+    --secondary: #241b2d;
+    --accent: #8b6ca7;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+html {
+    color-scheme: dark light;
+}
+
+img, picture, svg, video {
+    display: block;
+    max-width: 100%;
+}
