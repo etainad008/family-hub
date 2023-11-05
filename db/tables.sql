@@ -17,19 +17,6 @@ CREATE TABLE family_members(
     FOREIGN KEY(family_id) REFERENCES families(family_id) ON DELETE SET NULL
 );
 
--- pets(pet_id, family_id, pet_name, pet_birthday)
-/*
-DROP TABLE IF EXISTS pets;
-CREATE TABLE pets(
-    pet_id SERIAL PRIMARY KEY,
-    family_id INT NOT NULL,
-    pet_name VARCHAR(255) NOT NULL,
-    pet_birthday TIMESTAMP,
-
-    FOREIGN KEY(family_id) REFERENCES families(family_id) ON DELETE CASCADE,
-);
-*/
-
 -- tasks(task_id, creator_id, assigned_ids, task_name, task_description, task_deadline, is_preset)
 DROP TABLE IF EXISTS tasks;
 CREATE TABLE tasks(
