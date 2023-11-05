@@ -1,4 +1,6 @@
+
 ## DB Schema
+
 (This is prone to change):
 * families(family_id, family_name)
 * family_members(member_id, family_id, member_name, birthday, status)
