@@ -1,17 +1,87 @@
-:root[data-theme='light'] {
-	--text: #221b11;
-	--background: #f6f3ee;
-	--primary: #473824;
-	--secondary: #ddcfbb;
-	--accent: #886c44;
+/* :root[data-theme='light'] {
+	--text: #030507;
+	--background: #f5f7fa;
+	--primary: #405c87;
+	--secondary: #e0e6f0;
+	--accent: #5579af;
 }
 
 :root[data-theme='dark'] {
-	--text: #eee7dd;
-	--background: #110e09;
-	--primary: #dbccb8;
-	--secondary: #443622;
-	--accent: #bb9f77;
+	--text: #f8fafc;
+	--background: #05070a;
+	--primary: #7894bf;
+	--secondary: #0f151f;
+	--accent: #5074aa;
+} */
+
+:root[data-theme='light'] {
+	--text: #0a0f0f;
+	--background: #f6f9f9;
+	--primary: #38524f;
+	--secondary: #c2d6d4;
+	--accent: #537976;
+}
+:root[data-theme='dark'] {
+	--text: #f0f5f5;
+	--background: #060909;
+	--primary: #adc7c4;
+	--secondary: #293d3b;
+	--accent: #86aca9;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	--font-scale: 1.333;
+
+	/* text sizes */
+	--p: 1.25rem;
+	--h5: calc(var(--p) * var(--font-scale));
+	--h4: calc(var(--h5) * var(--font-scale));
+	--h3: calc(var(--h4) * var(--font-scale));
+	--h2: calc(var(--h3) * var(--font-scale));
+	--h1: calc(var(--h2) * var(--font-scale));
+
+	/* padding */
+	--padding-400: 1rem;
+	--padding-500: calc(var(--padding-400) * var(--font-scale));
+	--padding-600: calc(var(--padding-500) * var(--font-scale));
+	--padding-700: calc(var(--padding-600) * var(--font-scale));
+	--padding-800: calc(var(--padding-700) * var(--font-scale));
+	--padding-900: calc(var(--padding-800) * var(--font-scale));
+
+	--br: 1rem;
+
+	background-color: var(--background);
+}
+
+p {
+	font-size: var(--p);
+	line-height: 1.5rem;
+}
+
+h1 {
+	font-size: var(--h1);
+	font-weight: 900;
+}
+
+h2 {
+	font-size: var(--h2);
+	font-weight: 800;
+}
+
+h3 {
+	font-size: var(--h3);
+	font-weight: 700;
+}
+
+h4 {
+	font-size: var(--h4);
+	font-weight: 600;
+}
+
+h5 {
+	font-size: var(--h5);
+	font-weight: 500;
 }
 
 *,
