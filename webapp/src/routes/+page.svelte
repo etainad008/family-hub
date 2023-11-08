@@ -8,7 +8,7 @@
 	<title>Homepage | Family Hub</title>
 </svelte:head>
 
-<header class="hero" in:fly={{y: ".25rem", duration: 300}}>
+<header class="hero" in:fly={{ y: '.25rem', duration: 300 }}>
 	<div class="hero--content">
 		<h1 class="hero__title">Lorem ipsum sit amet.</h1>
 		<div class="hero--buttons">
@@ -69,7 +69,7 @@
 	</article>
 	<!-- more -->
 	<article class="card">
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 205 160" fill="none">
+		<svg xmlns="http://www.w3.org/2000/svg" vieswBox="0 0 205 160" fill="none">
 			<path
 				d="M64.7 89.3559C87.0675 89.3559 105.2 71.1438 105.2 48.678C105.2 26.2121 87.0675 8 64.7 8C42.3325 8 24.2 26.2121 24.2 48.678C24.2 71.1438 42.3325 89.3559 64.7 89.3559ZM64.7 89.3559C8 89.3559 8 136.542 8 152H121.4C121.4 136.542 121.4 89.3559 64.7 89.3559ZM154.475 105.017C171.251 105.017 184.85 91.3578 184.85 74.5085C184.85 57.6591 171.251 44 154.475 44C137.699 44 124.1 57.6591 124.1 74.5085C124.1 91.3578 137.699 105.017 154.475 105.017ZM154.475 105.017C197 105.017 197 140.407 197 152H122.345M154.475 105.017C134.82 105.017 124.25 112.577 118.565 121.853"
 				stroke-linecap="round"

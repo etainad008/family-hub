@@ -21,7 +21,12 @@
 
 <nav class="nav">
 	<a href="/" class="nav__logo nav__link"><p>Family Hub</p></a>
-	<form class="nav__theme nav__link" action="/?/changetheme" method="POST" use:enhance={handleSwitchTheme}>
+	<form
+		class="nav__theme nav__link"
+		action="/?/changetheme"
+		method="POST"
+		use:enhance={handleSwitchTheme}
+	>
 		<button name="switch-theme" value={theme} title="switch theme">
 			{#if theme == 'light'}
 				<svg
@@ -81,7 +86,7 @@
 	}
 
 	.nav__logo {
-		text-decoration: underline var(--primary) .25rem;
+		text-decoration: underline var(--primary) 0.25rem;
 	}
 
 	.nav__theme {

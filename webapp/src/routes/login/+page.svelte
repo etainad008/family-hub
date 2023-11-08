@@ -1,17 +1,18 @@
 <script>
 	import Button from '$lib/components/Button.svelte';
-	
+	import Input from '$lib/components/Input.svelte';
+
 	import { fly } from 'svelte/transition';
 
 	/** @type {import('./$types').PageData} */
-	export let data;
+	// export let data;
 </script>
 
 <svelte:head>
 	<title>Login | Family Hub</title>
 </svelte:head>
 
-<main in:fly={{y: ".25rem", duration: 300}}>
+<main in:fly={{ y: '.25rem', duration: 300 }}>
 	<form action="?/login">
 		<header class="login--header">
 			<h2>Login</h2>
@@ -21,27 +22,25 @@
 			<div class="fields">
 				<label>
 					<h3>Username</h3>
-					<!-- svelte-ignore a11y-autofocus -->
 					<input
 						type="text"
 						name="username"
 						placeholder="username"
 						autocomplete="username"
 						required
-						autofocus
 					/>
 				</label>
 				<label>
 					<h3>Password</h3>
 					<input
-						type="text"
+						type="password"
 						name="password"
 						placeholder="password"
 						autocomplete="current-password"
 						required
 					/>
 				</label>
-				<Button style="margin-top: 1.5rem" hoverable>Login</Button>
+				<Button style="margin-top: 1.5rem">Login</Button>
 			</div>
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 293" fill="none">
 				<path
@@ -59,9 +58,6 @@
 		justify-content: center;
 		align-items: center;
 		padding: var(--padding-900);
-		/* position: relative;
-		inset: 0;
-		margin: auto; */
 	}
 
 	form {
@@ -116,13 +112,6 @@
 		gap: 1.5rem;
 	}
 
-	/* .fields input:focus,
-	.fields button:focus {
-		outline: 3px solid var(--secondary);
-		outline-offset: 4px;
-		outline: none;
-	} */
-
 	label {
 		color: var(--background);
 	}
@@ -142,9 +131,4 @@
 		box-shadow: inset 0 0 1rem 2rem var(--secondary);
 		-webkit-text-fill-color: var(--text);
 	}
-
-	/* input::placeholder {
-		font-size: var(--p);
-		opacity: .9;
-	} */
 </style>
