@@ -1,4 +1,8 @@
 <script>
+	import Button from '$lib/components/Button.svelte';
+	
+	import { fly } from 'svelte/transition';
+
 	/** @type {import('./$types').PageData} */
 	export let data;
 </script>
@@ -7,24 +11,37 @@
 	<title>Login | Family Hub</title>
 </svelte:head>
 
-<main>
+<main in:fly={{y: ".25rem", duration: 300}}>
 	<form action="?/login">
 		<header class="login--header">
 			<h2>Login</h2>
-			<div class="header--line"></div>
+			<div class="header--line" />
 		</header>
 		<div class="login--form">
 			<div class="fields">
-				<label for="username">
+				<label>
 					<h3>Username</h3>
 					<!-- svelte-ignore a11y-autofocus -->
-					<input type="text" name="username" placeholder="username" autocomplete="username" required autofocus />
+					<input
+						type="text"
+						name="username"
+						placeholder="username"
+						autocomplete="username"
+						required
+						autofocus
+					/>
 				</label>
-				<label for="password">
+				<label>
 					<h3>Password</h3>
-					<input type="text" name="password" placeholder="password" autocomplete="current-password" required />
+					<input
+						type="text"
+						name="password"
+						placeholder="password"
+						autocomplete="current-password"
+						required
+					/>
 				</label>
-				<button class="login__button"><p>Login</p></button>
+				<Button style="margin-top: 1.5rem" hoverable>Login</Button>
 			</div>
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 293" fill="none">
 				<path
@@ -50,12 +67,12 @@
 	form {
 		display: flex;
 		flex-direction: column;
-		gap: .5rem;
+		gap: 0.5rem;
 		width: 50vw;
 		min-width: 30rem;
 		max-width: 48rem;
 	}
-	
+
 	.login--header {
 		display: flex;
 		align-items: center;
@@ -65,7 +82,7 @@
 	.login--header > h2 {
 		color: var(--text);
 	}
-	
+
 	.header--line {
 		flex-grow: 1;
 		height: 2.5rem;
@@ -107,7 +124,7 @@
 	} */
 
 	label {
-		color: var(--background)
+		color: var(--background);
 	}
 
 	input {
@@ -115,29 +132,19 @@
 		padding: var(--padding-100) var(--padding-400);
 		background-color: var(--secondary);
 		border: none;
+		/* border: 2px solid var(--secondary); */
 		border-radius: var(--br);
 		color: var(--text);
 		font-size: var(--p);
 	}
-	
+
+	input:-webkit-autofill {
+		box-shadow: inset 0 0 1rem 2rem var(--secondary);
+		-webkit-text-fill-color: var(--text);
+	}
+
 	/* input::placeholder {
 		font-size: var(--p);
 		opacity: .9;
 	} */
-
-	.login__button {
-		border: none;
-		background-color: var(--secondary);
-		width: fit-content;
-		padding: var(--padding-200) var(--padding-400);
-		margin-top: 1.5rem;
-		border-radius: var(--br);
-		color: var(--text);
-		cursor: pointer;
-		transition: translate 200ms ease-in-out;
-	}
-
-	.login__button:hover {
-		translate: 0 -.25rem;
-	}
 </style>

@@ -1,13 +1,21 @@
+<script>
+	import Button from '$lib/components/Button.svelte';
+
+	import { fly } from 'svelte/transition';
+</script>
+
 <svelte:head>
 	<title>Homepage | Family Hub</title>
 </svelte:head>
 
-<header class="hero">
+<header class="hero" in:fly={{y: ".25rem", duration: 300}}>
 	<div class="hero--content">
 		<h1 class="hero__title">Lorem ipsum sit amet.</h1>
 		<div class="hero--buttons">
-			<button><h5>See More</h5></button>
-			<button><h5>Sign Up</h5></button>
+			<Button size="h5" hoverable>See More</Button>
+			<Button size="h5" background="accent" color="background" shadow="3rem" hoverable
+				>Sign Up</Button
+			>
 		</div>
 	</div>
 	<div class="hero--family">
@@ -39,9 +47,9 @@
 	<article class="card">
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none">
 			<path
-			d="M43.9982 79.9978L67.9935 103.993L115.994 56.0031M8 79.9978C8.00247 45.6505 32.2673 16.0881 65.955 9.38953C99.6431 2.69105 133.371 20.722 146.514 52.4555C159.656 84.189 148.552 120.787 119.992 139.867C91.4324 158.948 53.3707 155.197 29.0846 130.909C15.5831 117.406 7.99866 99.0932 8 79.9978Z"
-			stroke-linecap="round"
-			stroke-linejoin="round"
+				d="M43.9982 79.9978L67.9935 103.993L115.994 56.0031M8 79.9978C8.00247 45.6505 32.2673 16.0881 65.955 9.38953C99.6431 2.69105 133.371 20.722 146.514 52.4555C159.656 84.189 148.552 120.787 119.992 139.867C91.4324 158.948 53.3707 155.197 29.0846 130.909C15.5831 117.406 7.99866 99.0932 8 79.9978Z"
+				stroke-linecap="round"
+				stroke-linejoin="round"
 			/>
 		</svg>
 		<h5>Set Tasks</h5>
@@ -51,9 +59,9 @@
 	<article class="card">
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none">
 			<path
-			d="M40 8V32M120 8V32M40.8002 144C44.5063 125.742 60.6483 112 80 112C99.352 112 115.494 125.742 119.2 144M33.6 152H126.4C135.361 152 139.842 152 143.264 150.256C146.274 148.722 148.722 146.274 150.256 143.264C152 139.842 152 135.361 152 126.4V49.6C152 40.6391 152 36.1587 150.256 32.7362C148.722 29.7255 146.274 27.2778 143.264 25.7439C139.842 24 135.361 24 126.4 24H33.6C24.6392 24 20.1587 24 16.7362 25.7439C13.7255 27.2778 11.2778 29.7255 9.74392 32.7362C8 36.1587 8 40.6391 8 49.6V126.4C8 135.361 8 139.842 9.74392 143.264C11.2778 146.274 13.7255 148.722 16.7362 150.256C20.1587 152 24.6391 152 33.6 152ZM96 72C96 80.8368 88.8368 88 80 88C71.1632 88 64 80.8368 64 72C64 63.1634 71.1632 56 80 56C88.8368 56 96 63.1634 96 72Z"
-			stroke-linecap="round"
-			stroke-linejoin="round"
+				d="M40 8V32M120 8V32M40.8002 144C44.5063 125.742 60.6483 112 80 112C99.352 112 115.494 125.742 119.2 144M33.6 152H126.4C135.361 152 139.842 152 143.264 150.256C146.274 148.722 148.722 146.274 150.256 143.264C152 139.842 152 135.361 152 126.4V49.6C152 40.6391 152 36.1587 150.256 32.7362C148.722 29.7255 146.274 27.2778 143.264 25.7439C139.842 24 135.361 24 126.4 24H33.6C24.6392 24 20.1587 24 16.7362 25.7439C13.7255 27.2778 11.2778 29.7255 9.74392 32.7362C8 36.1587 8 40.6391 8 49.6V126.4C8 135.361 8 139.842 9.74392 143.264C11.2778 146.274 13.7255 148.722 16.7362 150.256C20.1587 152 24.6391 152 33.6 152ZM96 72C96 80.8368 88.8368 88 80 88C71.1632 88 64 80.8368 64 72C64 63.1634 71.1632 56 80 56C88.8368 56 96 63.1634 96 72Z"
+				stroke-linecap="round"
+				stroke-linejoin="round"
 			/>
 		</svg>
 		<h5>Set Events</h5>
@@ -63,13 +71,13 @@
 	<article class="card">
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 205 160" fill="none">
 			<path
-			d="M64.7 89.3559C87.0675 89.3559 105.2 71.1438 105.2 48.678C105.2 26.2121 87.0675 8 64.7 8C42.3325 8 24.2 26.2121 24.2 48.678C24.2 71.1438 42.3325 89.3559 64.7 89.3559ZM64.7 89.3559C8 89.3559 8 136.542 8 152H121.4C121.4 136.542 121.4 89.3559 64.7 89.3559ZM154.475 105.017C171.251 105.017 184.85 91.3578 184.85 74.5085C184.85 57.6591 171.251 44 154.475 44C137.699 44 124.1 57.6591 124.1 74.5085C124.1 91.3578 137.699 105.017 154.475 105.017ZM154.475 105.017C197 105.017 197 140.407 197 152H122.345M154.475 105.017C134.82 105.017 124.25 112.577 118.565 121.853"
-			stroke-linecap="round"
-			stroke-linejoin="round"
+				d="M64.7 89.3559C87.0675 89.3559 105.2 71.1438 105.2 48.678C105.2 26.2121 87.0675 8 64.7 8C42.3325 8 24.2 26.2121 24.2 48.678C24.2 71.1438 42.3325 89.3559 64.7 89.3559ZM64.7 89.3559C8 89.3559 8 136.542 8 152H121.4C121.4 136.542 121.4 89.3559 64.7 89.3559ZM154.475 105.017C171.251 105.017 184.85 91.3578 184.85 74.5085C184.85 57.6591 171.251 44 154.475 44C137.699 44 124.1 57.6591 124.1 74.5085C124.1 91.3578 137.699 105.017 154.475 105.017ZM154.475 105.017C197 105.017 197 140.407 197 152H122.345M154.475 105.017C134.82 105.017 124.25 112.577 118.565 121.853"
+				stroke-linecap="round"
+				stroke-linejoin="round"
 			/>
 		</svg>
 		<h5>Set Status</h5>
-		<p>Set a status to inform family members what you are up to </p>
+		<p>Set a status to inform family members what you are up to</p>
 	</article>
 </div>
 
@@ -97,34 +105,6 @@
 	.hero--buttons {
 		display: flex;
 		gap: 2rem;
-	}
-
-	.hero--buttons > * {
-		padding: calc(var(--padding-500) / 2) var(--padding-500);
-		border-radius: var(--br);
-		border: none;
-		cursor: pointer;
-		transition: box-shadow 200ms ease-in-out,
-					translate 200ms ease-in-out;
-		white-space: nowrap;
-	}
-
-	.hero--buttons > *:first-child {
-		background-color: var(--secondary);
-		color: var(--text);
-	}
-
-	.hero--buttons > *:last-child {
-		background-color: var(--accent);
-		color: var(--background);
-	}
-
-	.hero--buttons > *:hover {
-		translate: 0 -.25rem;
-	}
-	
-	.hero--buttons > *:last-child:hover {
-		box-shadow: 0 0 3rem var(--accent);
 	}
 
 	.hero__title {
@@ -244,7 +224,6 @@
 	}
 
 	@keyframes svgHover {
-
 		49% {
 			z-index: -1;
 		}

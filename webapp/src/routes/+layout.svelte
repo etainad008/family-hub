@@ -1,8 +1,8 @@
 <script>
-    import { enhance } from '$app/forms';
+	import { enhance } from '$app/forms';
 	import { fly } from 'svelte/transition';
-    
-    /** @type {import('./$types').LayoutData} */
+
+	/** @type {import('./$types').LayoutData} */
 	export let data;
 	let theme = data.theme;
 
@@ -20,9 +20,9 @@
 </script>
 
 <nav class="nav">
-	<p><a href="/" class="nav__link">Family Hub</a></p>
-	<form action="/?/changetheme" method="POST" use:enhance={handleSwitchTheme}>
-		<button class="nav__theme" name="switch-theme" value={theme} title="switch theme">
+	<a href="/" class="nav__logo nav__link"><p>Family Hub</p></a>
+	<form class="nav__theme nav__link" action="/?/changetheme" method="POST" use:enhance={handleSwitchTheme}>
+		<button name="switch-theme" value={theme} title="switch theme">
 			{#if theme == 'light'}
 				<svg
 					viewBox="0 0 24 24"
@@ -54,16 +54,16 @@
 			{/if}
 		</button>
 	</form>
-	<p><a href="/login" class="nav__link">Log In</a></p>
+	<a href="/login" class="nav__link"><p>Log In</p></a>
 </nav>
 
 <slot />
 
 <style>
-    @import '../index.css';
+	@import '../index.css';
 	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
-    
-    /* nav */
+
+	/* nav */
 	.nav {
 		--theme-height: 3rem;
 
@@ -80,17 +80,21 @@
 		color: var(--text);
 	}
 
-	.nav > *:nth-last-child(2) {
-		margin-left: auto;
+	.nav__logo {
+		text-decoration: underline var(--primary) .25rem;
 	}
 
 	.nav__theme {
+		margin-left: auto;
+	}
+
+	.nav__theme > button {
 		display: flex;
 		background-color: transparent;
 		border: none;
 	}
 
-	.nav__theme > svg {
+	.nav__theme svg {
 		width: var(--theme-height);
 		stroke: var(--text);
 		stroke-width: 1.5px;
