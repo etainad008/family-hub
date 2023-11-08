@@ -1,10 +1,6 @@
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ cookies }) {
-	const theme = cookies.get('theme');
-
-	return {
-		theme: theme
-	};
+export async function load() {
+	return {};
 }
 
 export const actions = {

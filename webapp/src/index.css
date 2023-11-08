@@ -1,4 +1,4 @@
-/* :root[data-theme='light'] {
+:root[data-theme='light'] {
 	--text: #030507;
 	--background: #f5f7fa;
 	--primary: #405c87;
@@ -12,9 +12,9 @@
 	--primary: #7894bf;
 	--secondary: #0f151f;
 	--accent: #5074aa;
-} */
+}
 
-:root[data-theme='light'] {
+/* :root[data-theme='light'] {
 	--text: #0a0f0f;
 	--background: #f6f9f9;
 	--primary: #38524f;
@@ -27,14 +27,14 @@
 	--primary: #adc7c4;
 	--secondary: #293d3b;
 	--accent: #86aca9;
-}
+} */
 
 body {
 	font-family: 'Poppins', sans-serif;
 	--font-scale: 1.333;
 
 	/* text sizes */
-	--p: 1.25rem;
+	--p: 1.25em;
 	--h5: calc(var(--p) * var(--font-scale));
 	--h4: calc(var(--h5) * var(--font-scale));
 	--h3: calc(var(--h4) * var(--font-scale));
@@ -42,6 +42,9 @@ body {
 	--h1: calc(var(--h2) * var(--font-scale));
 
 	/* padding */
+	--padding-100: calc(var(--padding-200) / var(--font-scale));
+	--padding-200: calc(var(--padding-300) / var(--font-scale));
+	--padding-300: calc(var(--padding-400) / var(--font-scale));
 	--padding-400: 1rem;
 	--padding-500: calc(var(--padding-400) * var(--font-scale));
 	--padding-600: calc(var(--padding-500) * var(--font-scale));
