@@ -21,6 +21,9 @@
 
 <nav class="nav">
 	<a href="/" class="nav__logo nav__link"><p>Family Hub</p></a>
+	<a href="/spaces/dashboard" class="nav__link">
+		<p>Spaces</p>
+	</a>
 	<form
 		class="nav__theme nav__link"
 		action="/?/changetheme"
@@ -75,7 +78,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		gap: 2rem;
+		gap: 1.5em;
 		padding: var(--padding-600) var(--padding-700);
 		background-color: var(--background);
 	}
@@ -86,12 +89,12 @@
 		padding: var(--padding-100);
 	}
 
-	.nav__logo {
-		text-decoration: underline var(--primary) 0.25rem;
+	.nav__link:nth-child(2) {
+		margin-inline: auto;
 	}
 
-	.nav__theme {
-		margin-left: auto;
+	.nav__logo {
+		text-decoration: underline var(--primary) 0.25rem;
 	}
 
 	.nav__theme > button {
