@@ -83,6 +83,7 @@
 	.nav__link {
 		text-decoration: none;
 		color: var(--text);
+		padding: var(--padding-100);
 	}
 
 	.nav__logo {

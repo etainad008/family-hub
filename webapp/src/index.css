@@ -29,7 +29,41 @@
 	--accent: #86aca9;
 } */
 
-body {
+/* :root[data-theme="light"] {
+	--text: #0b1108;
+	--background: #edf5ea;
+	--primary: #78b762;
+	--secondary: #e1efdc;
+	--accent: #69af50;
+  }
+  :root[data-theme="dark"] {
+	--text: #f1f7ee;
+	--background: #0d150a;
+	--primary: #5f9d48;
+	--secondary: #152310;
+	--accent: #69af50;
+  } */
+  
+
+  :root[data-theme="light"] {
+	--text: #070a13;
+	--background: #fbfcfe;
+	--primary: #243d6a;
+	--secondary: #c2d0ea;
+	--accent: #395ca7;
+	--grey: #717171;
+  }
+  :root[data-theme="dark"] {
+	--text: #eceff8;
+	--background: #010204;
+	--primary: #95addb;
+	--secondary: #15233d;
+	--accent: #587bc6;
+	--grey: #717171;
+  }
+  
+
+:root {
 	font-family: 'Poppins', sans-serif;
 	--font-scale: 1.333;
 
@@ -40,6 +74,13 @@ body {
 	--h3: calc(var(--h4) * var(--font-scale));
 	--h2: calc(var(--h3) * var(--font-scale));
 	--h1: calc(var(--h2) * var(--font-scale));
+
+	--fs-400: 1.25em;
+	--fs-500: calc(var(--fs-400) * var(--font-scale));
+	--fs-600: calc(var(--fs-500) * var(--font-scale));
+	--fs-700: calc(var(--fs-600) * var(--font-scale));
+	--fs-800: calc(var(--fs-700) * var(--font-scale));
+	--fs-900: calc(var(--fs-800) * var(--font-scale));
 
 	/* padding */
 	--padding-100: calc(var(--padding-200) / var(--font-scale));
@@ -58,32 +99,32 @@ body {
 }
 
 p {
-	font-size: var(--p);
+	font-size: var(--fs-400);
 	line-height: 1.5rem;
 }
 
 h1 {
-	font-size: var(--h1);
+	font-size: var(--fs-900);
 	font-weight: 900;
 }
 
 h2 {
-	font-size: var(--h2);
+	font-size: var(--fs-800);
 	font-weight: 800;
 }
 
 h3 {
-	font-size: var(--h3);
+	font-size: var(--fs-700);
 	font-weight: 700;
 }
 
 h4 {
-	font-size: var(--h4);
+	font-size: var(--fs-600);
 	font-weight: 600;
 }
 
 h5 {
-	font-size: var(--h5);
+	font-size: var(--fs-500);
 	font-weight: 500;
 }
 
