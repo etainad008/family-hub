@@ -8,7 +8,10 @@
 <header>
 	<div class="top--header">
 		<section>
-			<div class="picture" data-per="45deg" />
+			<div class="picture">
+                <Progress type="circle" maxValue={4} value={2}></Progress>
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.8QRdhC_5aU7Z-uedJmXDowHaHa%26pid%3DApi&f=1&ipt=3d5250e2bac8fa86b82b4318f5945815fd1bfa072c0af5880d01d6da6d9b4664&ipo=images" alt="pfp">
+            </div>
 			<!-- should be an img element -->
 			<div class="details">
 				<h4 class="name">Etai</h4>
@@ -78,13 +81,26 @@
 	.picture {
 		position: relative;
 		height: 80%;
+        display: grid;
+        grid-template-areas: "stack";
 		aspect-ratio: 1/1;
-		background-color: firebrick;
 		border-radius: 50%;
 		border: 0.25rem solid var(--background);
 	}
 
-	.picture::after {
+    .picture > * {
+        grid-area: stack;
+    }
+
+    .picture > img {
+        position: absolute;
+        border-radius: 50%;
+        inset: 0;
+        margin: auto;
+        width: 80%
+    }
+
+	/* .picture::after {
 		content: '';
 		position: absolute;
 		inset: 0;
@@ -93,7 +109,7 @@
 		background-color: blue;
 		z-index: -1;
 		border-radius: 50%;
-	}
+	} */
 
 	.tasks__done {
 		white-space: nowrap;
