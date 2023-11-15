@@ -1,5 +1,7 @@
 <script>
-	/** @type {import('./$types').LayoutData} */
+    import Progress from '$lib/components/Progress.svelte';
+    
+    /** @type {import('./$types').LayoutData} */
 	export let data;
 </script>
 
@@ -41,7 +43,6 @@
 	</div>
 
 	<div class="line" />
-	<!-- <hr /> -->
 
 	<form action="?/changefamily" method="POST">
 		<select name="family">
