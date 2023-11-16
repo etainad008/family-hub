@@ -105,7 +105,7 @@
 		translate: 50% 0;
 		height: 104%;
 	}
-	
+
 	.fields {
 		display: flex;
 		flex-direction: column;

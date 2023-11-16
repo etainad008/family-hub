@@ -1,25 +1,28 @@
 <script>
-    import Progress from '$lib/components/Progress.svelte';
-    
-    /** @type {import('./$types').LayoutData} */
+	import Progress from '$lib/components/Progress.svelte';
+
+	/** @type {import('./$types').LayoutData} */
 	export let data;
+
+	let family;
 </script>
 
 <header>
 	<div class="top--header">
-		<section>
-			<div class="picture">
-                <Progress type="circle" maxValue={4} value={2}></Progress>
-                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.8QRdhC_5aU7Z-uedJmXDowHaHa%26pid%3DApi&f=1&ipt=3d5250e2bac8fa86b82b4318f5945815fd1bfa072c0af5880d01d6da6d9b4664&ipo=images" alt="pfp">
-            </div>
-			<!-- should be an img element -->
-			<div class="details">
-				<h4 class="name">Etai</h4>
-				<p class="tasks__done"><span>1</span> out of <span>2</span> tasks done</p>
+		<section class="account">
+			<div class="account--picture">
+				<Progress type="circle" maxValue={4} value={4} />
+				<img
+					src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.8QRdhC_5aU7Z-uedJmXDowHaHa%26pid%3DApi&f=1&ipt=3d5250e2bac8fa86b82b4318f5945815fd1bfa072c0af5880d01d6da6d9b4664&ipo=images"
+					alt="pfp"
+				/>
 			</div>
+			<article class="account--details">
+				<h5 class="name">Etai</h5>
+				<p class="tasks__done"><span>1</span> out of <span>2</span> tasks done</p>
+			</article>
 		</section>
 		<section class="icons">
-			<!-- svg * 3 -->
 			<!-- dashboard -->
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 35" fill="none">
 				<path d="M2 2H11.9623V33H2V2Z" stroke-linejoin="round" />
@@ -45,14 +48,16 @@
 		</section>
 	</div>
 
-	<div class="line" />
+	<hr />
 
-	<form action="?/changefamily" method="POST">
-		<select name="family">
-			<option value="Nadler">Nadler</option>
-			<option value="Mishi">Mishi</option>
+	<div class="family">
+		<label for="family"><h4>{family}</h4></label>
+		<select name="family" id="family" bind:value={family}>
+			<option>Nadler</option>
+			<option>Mishi</option>
+			<option>Rubinstein</option>
 		</select>
-	</form>
+	</div>
 </header>
 
 <slot />
@@ -73,43 +78,37 @@
 	}
 
 	.top--header > section:first-child {
+		/* Account detail */
 		display: flex;
 		align-items: center;
-		gap: 2rem;
+		gap: 1rem;
 	}
 
-	.picture {
+	.account--picture {
 		position: relative;
-		height: 80%;
-        display: grid;
-        grid-template-areas: "stack";
+		display: grid;
+		grid-template-areas: 'stack';
+		height: 100%;
 		aspect-ratio: 1/1;
 		border-radius: 50%;
-		border: 0.25rem solid var(--background);
 	}
 
-    .picture > * {
-        grid-area: stack;
-    }
+	.account--picture > * {
+		grid-area: stack;
+	}
 
-    .picture > img {
-        position: absolute;
-        border-radius: 50%;
-        inset: 0;
-        margin: auto;
-        width: 80%
-    }
-
-	/* .picture::after {
-		content: '';
+	.account--picture > img {
 		position: absolute;
+		border-radius: 50%;
 		inset: 0;
 		margin: auto;
-		scale: 1.25;
-		background-color: blue;
-		z-index: -1;
-		border-radius: 50%;
-	} */
+		width: 80%;
+	}
+
+	.account--details {
+		padding-block: 0.5rem;
+		color: var(--text);
+	}
 
 	.tasks__done {
 		white-space: nowrap;
@@ -127,14 +126,82 @@
 
 	.icons > * {
 		width: 3rem;
-		stroke: white;
+		stroke: var(--text);
 		stroke-width: 0.25rem;
 		padding: 0.5rem;
 		border-radius: calc(var(--br) / 2);
 		cursor: pointer;
 	}
 
-	.line {
-		border-top: 1px solid rgba(255, 255, 255, 0.25);
+	.icons > *:first-child {
+		/* background-image: linear-gradient(to bottom, var(--secondary), var(--accent)); */
+		background-color: var(--accent);
+	}
+
+	hr {
+		border: none;
+		border-top: 1px solid var(--text);
+		opacity: 0.25;
+	}
+
+	/* family */
+	#family {
+		position: relative;
+		width: 100%;
+		/* padding: var(--padding-300); */
+		font-size: var(--fs-400);
+		border: none;
+		opacity: 0;
+		cursor: pointer;
+	}
+
+	#family > option {
+		background-color: var(--text);
+		/* background-color: blue; */
+		margin-left: 16px;
+		color: var(--background);
+	}
+
+	.family {
+		position: relative;
+		display: grid;
+		grid-template-areas: 'stack';
+		justify-items: center;
+		width: fit-content;
+		margin-left: 2rem;
+		color: var(--text);
+	}
+
+	.family > * {
+		grid-area: stack;
+	}
+
+	.family::after {
+		content: '';
+		position: absolute;
+		inset: auto 0 0.5em 0;
+		height: 0.25em;
+em;
+		color: var(--text);
+	}
+
+	.family > * {
+		grid-area: stack;
+	}
+
+	.family::after {
+		content: "";
+		position: absolute;
+		inset: auto 0 .5em 0 ;
+		height: .25em;
+		background-image: linear-gradient(to right, var(--accent), var(--primary));
+		transition: transform 150ms cubic-bezier(1, 0, 0, 1);
+		transform-origin: left;
+		transform: scaleX(0);
+		z-index: -1;
+	}
+
+	.family:hover::after {
+		transform: scaleX(1);
 	}
 </style>
