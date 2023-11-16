@@ -1,6 +1,21 @@
 <script>
+	import { Input } from "$lib/components/Input.svelte";
+	
 	/** @type {import('./$types').PageData} */
 	export let data;
+
+	let members = [
+		{
+			id: 1,
+			name: "Benjamin",
+			status: "at home"
+		},
+		{
+			id: 2,
+			name: "Mishi",
+			status: "at work"
+		}
+	]
 
 	let tasks = [
 		{
@@ -30,7 +45,7 @@
 			time: "Sunday, 3:00PM",
 			location: "Basketball Field"
 		}
-	]
+	];
 </script>
 
 <main>
@@ -85,7 +100,21 @@
 			{/each}
 		</div>
 	</div>
-	<div class="status">
-
+	<div class="statuses">
+		<h5>Status</h5>
+		<form class="statuses--set" method="POST" action="?/setStatus">
+			<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.8QRdhC_5aU7Z-uedJmXDowHaHa%26pid%3DApi&f=1&ipt=3d5250e2bac8fa86b82b4318f5945815fd1bfa072c0af5880d01d6da6d9b4664&ipo=images" alt="" />
+			<Input placeholder="My status..."></Input>
+		</form>
+		<hr>
+		<div class="statuses--list">
+			{#each members as member (member.id)}
+				<div class="status">
+					<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.8QRdhC_5aU7Z-uedJmXDowHaHa%26pid%3DApi&f=1&ipt=3d5250e2bac8fa86b82b4318f5945815fd1bfa072c0af5880d01d6da6d9b4664&ipo=images" alt="" />
+					<p class="status__name">{member.name}</p>
+					<p class="status__status">{member.status}</p>
+				</div>
+			{/each}
+		</div>
 	</div>
 </main>
