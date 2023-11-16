@@ -91,7 +91,8 @@
 	--padding-800: calc(var(--padding-700) * var(--font-scale));
 	--padding-900: calc(var(--padding-800) * var(--font-scale));
 
-	--br: 1rem;
+	--br: 1em; /* border radius */
+	--sbr: .5em; /* small border radius */
 
 	background-color: var(--background);
 }
@@ -126,6 +127,7 @@ h5 {
 	font-weight: 500;
 }
 
+/* resets */
 *,
 *::before,
 *::after {
@@ -145,4 +147,11 @@ svg,
 video {
 	display: block;
 	max-width: 100%;
+}
+
+/* styling */
+hr {
+	border: none;
+	border-top: 1px solid var(--text);
+	opacity: 0.25;
 }

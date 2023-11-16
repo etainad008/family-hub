@@ -129,7 +129,7 @@
 		stroke: var(--text);
 		stroke-width: 0.25rem;
 		padding: 0.5rem;
-		border-radius: calc(var(--br) / 2);
+		border-radius: var(--sbr);
 		cursor: pointer;
 	}
 
@@ -138,17 +138,10 @@
 		background-color: var(--accent);
 	}
 
-	hr {
-		border: none;
-		border-top: 1px solid var(--text);
-		opacity: 0.25;
-	}
-
 	/* family */
 	#family {
 		position: relative;
 		width: 100%;
-		/* padding: var(--padding-300); */
 		font-size: var(--fs-400);
 		border: none;
 		opacity: 0;
@@ -157,8 +150,6 @@
 
 	#family > option {
 		background-color: var(--text);
-		/* background-color: blue; */
-		margin-left: 16px;
 		color: var(--background);
 	}
 
@@ -168,7 +159,6 @@
 		grid-template-areas: 'stack';
 		justify-items: center;
 		width: fit-content;
-		margin-left: 2rem;
 		color: var(--text);
 	}
 

@@ -79,7 +79,7 @@
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 1.5em;
-		padding: var(--padding-600) var(--padding-700);
+		padding: var(--padding-400) var(--padding-700) var(--padding-600);
 		background-color: var(--background);
 	}
 

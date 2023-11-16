@@ -1,5 +1,5 @@
 <script>
-	import { Input } from "$lib/components/Input.svelte";
+	// import { Input } from "$lib/components/Input.svelte";
 	
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -8,12 +8,12 @@
 		{
 			id: 1,
 			name: "Benjamin",
-			status: "at home"
+			status: "at home",
 		},
 		{
 			id: 2,
 			name: "Mishi",
-			status: "at work"
+			status: "at work",
 		}
 	]
 
@@ -21,14 +21,14 @@
 		{
 			id: 1,
 			name: "Do Homework",
-			creator: "me",
-			description: "Do math home work on page 82"
+			assigner: "me",
+			description: "Do math homework on page 82",
 		},
 		{
 			id: 2,
 			name: "Clean room",
-			creator: "mom",
-			description: "Clean the room now!!"
+			assigner: "mom",
+			description: "Clean the room now!!",
 		}
 	];
 
@@ -37,32 +37,42 @@
 			id: 1,
 			name: "Family Gathering",
 			time: "Friday, 12:15AM",
-			location: "Grandma"
+			location: "Grandma",
+			color: "red",
 		},
 		{
 			id: 2,
 			name: "Basketball",
 			time: "Sunday, 3:00PM",
-			location: "Basketball Field"
+			location: "Basketball Field",
+			color: "blue",
 		}
 	];
 </script>
 
+<svelte:head>
+	<title>Dashboard | Family Hub</title>
+</svelte:head>
+
 <main>
 	<div class="tasks">
 		<h5>Tasks to Finish</h5>
-		<div class="new--task">
-			<button title="add new task">+</button>
+		<div class="tasks--new">
+			<button title="Add new task">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+					<path d="M10 2V10V18M18 10H2" stroke-linecap="round" stroke-linejoin="round" fill="blue" />
+				</svg>
+			</button>
 			<p>Add a new task</p>
 		</div>
 		<hr>
 		<div class="tasks--list">
 			{#each tasks as task (task.id)}
 				<div class="task">
-					<div class="task--detail">
-						<p>{task.name}</p>
-						<p>{task.creator}</p>
-						<p>{task.description}</p>
+					<div class="task--details">
+						<p class="task__name">{task.name}</p>
+						<p class="task__assigner">{task.assigner}</p>
+						<p class="task__description">{task.description}</p>
 					</div>
 					<button title="Set task as done">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 12" fill="none">
@@ -101,16 +111,16 @@
 		</div>
 	</div>
 	<div class="statuses">
-		<h5>Status</h5>
+		<h5>Statuses</h5>
 		<form class="statuses--set" method="POST" action="?/setStatus">
 			<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.8QRdhC_5aU7Z-uedJmXDowHaHa%26pid%3DApi&f=1&ipt=3d5250e2bac8fa86b82b4318f5945815fd1bfa072c0af5880d01d6da6d9b4664&ipo=images" alt="" />
-			<Input placeholder="My status..."></Input>
+			<!-- <Input placeholder="My status..."></Input> -->
 		</form>
 		<hr>
 		<div class="statuses--list">
 			{#each members as member (member.id)}
 				<div class="status">
-					<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.8QRdhC_5aU7Z-uedJmXDowHaHa%26pid%3DApi&f=1&ipt=3d5250e2bac8fa86b82b4318f5945815fd1bfa072c0af5880d01d6da6d9b4664&ipo=images" alt="" />
+					<img class="status__image" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.8QRdhC_5aU7Z-uedJmXDowHaHa%26pid%3DApi&f=1&ipt=3d5250e2bac8fa86b82b4318f5945815fd1bfa072c0af5880d01d6da6d9b4664&ipo=images" alt="" />
 					<p class="status__name">{member.name}</p>
 					<p class="status__status">{member.status}</p>
 				</div>
@@ -118,3 +128,153 @@
 		</div>
 	</div>
 </main>
+
+<style>
+	main {
+		display: flex;
+		justify-content: space-between;
+		padding-inline: var(--padding-900);
+		gap:  4rem;
+	}
+
+	/* tasks */
+	.tasks {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		color: var(--text);
+	}
+
+	.tasks--new {
+		display: flex;
+		align-items: center;
+		gap: .75rem;
+		white-space: nowrap;
+	}
+
+	.tasks--new > button {
+		min-width: 2.5em;
+		padding: .5em;
+		background-color: transparent;
+		border: .25em solid var(--accent);
+		border-radius: var(--br);
+		cursor: pointer;
+	}
+
+	.tasks--new > button > svg {
+		stroke: var(--text);
+		stroke-width: .25em;
+	}
+
+	.tasks--list {
+		max-height: 16rem;
+		overflow: hidden auto;
+	}
+
+	.tasks--list::-webkit-scrollbar {
+		width: .5em;
+	}
+	
+	.tasks--list::-webkit-scrollbar-thumb {
+		background-image: linear-gradient(to bottom, var(--accent), var(--text));
+		background-color: var(--text);
+		border-radius: 100vw;
+	}
+
+	.task {
+		display: flex;
+		gap: 1.5rem;
+		align-items: center;
+		padding: var(--padding-300);
+		padding-right: var(--padding-500);
+	}
+
+	.task--details {
+		flex-grow: 1;
+		display: grid;
+		grid-template-areas: "name assigner"
+							 "desc desc";
+		gap: .25em .5em;
+	}
+	
+	.task__name {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	
+	.task__assigner {
+		color: var(--accent);
+		font-size: var(--fs-300);
+		justify-self: end;
+	}
+	
+	.task__description {
+		max-width: 20ch;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		font-size: var(--fs-300);
+		grid-area: desc;
+	}
+
+	.task > button {
+		min-height: 2rem;
+		aspect-ratio: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--accent);
+		border: none;
+		border-radius: var(--sbr);
+		cursor: pointer;
+	}
+
+	.task > button > svg {
+		width: .75rem;
+		stroke: white;
+		stroke-width: .25em;
+	}
+
+	/* events */
+	.events {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		color: var(--text);
+	}
+
+	.events--list {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.event {
+		display: grid;
+		grid-auto-flow: column;
+		grid-template-columns: 2% repeat(4, 1fr);
+		white-space: nowrap;
+	}
+
+
+	/* statuses */
+	.statuses {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		color: var(--text);
+	}
+
+	.statuses--list {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.statuses--set > img {
+		width: 4rem;
+	}
+
+	.status__image {
+		width: 3rem;
+	}
+</style>
