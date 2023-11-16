@@ -181,7 +181,6 @@
 		position: absolute;
 		inset: auto 0 0.5em 0;
 		height: 0.25em;
-em;
 		color: var(--text);
 	}
 

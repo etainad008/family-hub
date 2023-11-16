@@ -2,6 +2,7 @@
 # DB Schema
 
 (This is prone to change):
+
 * families(family_id, family_name)
 * members(member_id, family_id, member_name, member_birthday, current_status)
 * tasks(task_id, creator_id, assigned_id, task_name, task_description, task_deadline, is_preset)
