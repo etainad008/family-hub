@@ -42,6 +42,7 @@ CREATE TABLE events(
     event_description VARCHAR(85),
     event_start TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     event_end TIMESTAMP NOT NULL DEFAULT (CURRENT_TIMESTAMP + INTERVAL '1 hour'),
+    event_arriving INT ARRAY NOT NULL DEFAULT ARRAY[]::INT[],
     event_color CHAR(7) NOT NULL DEFAULT '#cccccc',
 
     FOREIGN KEY(creator_id) REFERENCES members(member_id) ON DELETE CASCADE,
