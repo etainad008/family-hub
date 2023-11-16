@@ -29,7 +29,7 @@
 			name: "Clean room",
 			assigner: "mom",
 			description: "Clean the room now!!",
-		}
+		},
 	];
 
 	let events = [
@@ -167,6 +167,7 @@
 	}
 
 	.tasks--list {
+		direction: rtl;
 		max-height: 16rem;
 		overflow: hidden auto;
 	}
@@ -182,11 +183,12 @@
 	}
 
 	.task {
+		direction: ltr;
 		display: flex;
 		gap: 1.5rem;
 		align-items: center;
-		padding: var(--padding-300);
-		padding-right: var(--padding-500);
+		padding: var(--padding-200) 0 var(--padding-200) var(--padding-400);
+		padding-right: 0;
 	}
 
 	.task--details {
@@ -210,7 +212,7 @@
 	}
 	
 	.task__description {
-		max-width: 20ch;
+		max-width: 28ch;
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
