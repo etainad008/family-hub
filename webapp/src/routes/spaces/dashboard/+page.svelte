@@ -1,4 +1,6 @@
 <script>
+	import { enhance } from "$app/forms";
+
 	import Input from "$lib/components/Input.svelte";
 	
 	/** @type {import('./$types').PageData} */
@@ -48,6 +50,15 @@
 			color: "yellow",
 		}
 	];
+
+	let setStatusForm;
+	let setStatusButton;
+
+	function preventFormReset() {
+        return async ({ update }) => {
+            await update({ reset: false });
+        }
+    }
 </script>
 
 <svelte:head>
@@ -55,7 +66,7 @@
 </svelte:head>
 
 <main>
-	<div class="tasks">
+	<article class="tasks">
 		<h5>Tasks to Finish</h5>
 		<div class="tasks--new">
 			<button title="Add new task">
@@ -82,8 +93,8 @@
 				</div>
 			{/each}
 		</div>
-	</div>
-	<div class="events">
+	</article>
+	<article class="events">
 		<h5>Upcoming Events</h5>
 		<hr>
 		<div class="events--list">
@@ -108,12 +119,13 @@
 				</div>
 			{/each}
 		</div>
-	</div>
-	<div class="statuses">
+	</article>
+	<article class="statuses">
 		<h5>Statuses</h5>
-		<form class="statuses--set" method="POST" action="?/setStatus">
-			<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.8QRdhC_5aU7Z-uedJmXDowHaHa%26pid%3DApi&f=1&ipt=3d5250e2bac8fa86b82b4318f5945815fd1bfa072c0af5880d01d6da6d9b4664&ipo=images" alt="" />
-			<Input placeholder="My status..." />
+		<form class="statuses--set" method="POST" action="?/setStatus" bind:this={setStatusForm} use:enhance={preventFormReset}>
+			<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.HLuY60jzx5puuKjbqmWRRwHaEK%26pid%3DApi&f=1&ipt=81902346e97e5047450710dbf2dc44a617d314d0fed95f8335f2349afb971699&ipo=images" alt="my profile" />
+			<Input name="status" placeholder="My status..." on:focusout={() => setStatusButton.click()} />
+			<button bind:this={setStatusButton}></button> <!-- this button is invisible -->
 		</form>
 		<hr>
 		<div class="statuses--list">
@@ -125,7 +137,7 @@
 				</div>
 			{/each}
 		</div>
-	</div>
+	</article>
 </main>
 
 <style>
@@ -251,10 +263,6 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		/* display: grid;
-		grid-auto-flow: column;
-		grid-template-columns: repeat(4, 25%);
-		align-items: center; */
 		gap: 1rem;
 		padding: var(--padding-400);
 		padding-right: 0;
@@ -331,13 +339,49 @@
 	.statuses--list {
 		display: flex;
 		flex-direction: column;
+		gap: 1.5rem;
+		padding-left: var(--padding-400);
+	}
+
+	.statuses--set {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.statuses--set > button {
+		display: none;
 	}
 
 	.statuses--set > img {
 		width: 4rem;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		object-fit: cover;
+	}
+
+	.status {
+		display: grid;
+		grid-template-columns: 3rem 1fr;
+		gap: var(--padding-100) var(--padding-300);
 	}
 
 	.status__image {
-		width: 3rem;
+		grid-row: span 2;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		object-fit: cover;
+	}
+
+	.status__name {
+		grid-column: 2;
+	}
+	
+	.status__status { /* Shush I know */
+		width: fit-content;
+		font-size: var(--fs-300);
+		background-image: linear-gradient(to left, var(--accent), var(--secondary));
+		border-radius: 0 100vw 100vw 0;
+		padding-inline: var(--padding-100) var(--padding-400);
 	}
 </style>

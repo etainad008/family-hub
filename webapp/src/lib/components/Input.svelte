@@ -1,4 +1,8 @@
 <script>
+	import { createEventDispatcher } from "svelte";
+
+	const dispatch = createEventDispatcher();
+
 	export let type = 'text';
 	export let name = null;
 	export let placeholder = null;
@@ -20,7 +24,7 @@
 	};
 </script>
 
-<input {...attributes} />
+<input {...attributes} on:focusout={() => dispatch('focusout')} />
 
 <style>
 	input {
