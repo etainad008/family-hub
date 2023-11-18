@@ -1,5 +1,5 @@
 <script>
-	// import { Input } from "$lib/components/Input.svelte";
+	import Input from "$lib/components/Input.svelte";
 	
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -45,7 +45,7 @@
 			name: "Basketball",
 			time: "Sunday, 3:00PM",
 			location: "Basketball Field",
-			color: "blue",
+			color: "yellow",
 		}
 	];
 </script>
@@ -89,23 +89,22 @@
 		<div class="events--list">
 			{#each events as event (event.id)}
 				<div class="event">
-					<div class="event__color"></div>
-					<p>{event.name}</p>
+					<div class="event__color {event.color}"></div>
+					<p class="event__name">{event.name}</p>
 					<div class="event--time">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="none">
-							<path d="M10 4C10 3.44772 9.55229 3 9 3C8.44771 3 8 3.44772 8 4V9V10H9H12C12.5523 10 13 9.55229 13 9C13 8.44771 12.5523 8 12 8H10V4ZM17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z" stroke-linecap="round" />
+							<path d="M9 5V9H12.5M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z" stroke-linecap="round" />
 						</svg>
+						<p>{event.time}</p>
 					</div>
 					<div class="event--location">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 20" fill="none">
 							<path d="M8.33337 19C4.83337 15.4 1.33337 12.1764 1.33337 8.2C1.33337 4.22355 4.46737 1 8.33337 1C12.1994 1 15.3334 4.22355 15.3334 8.2C15.3334 12.1764 11.8334 15.4 8.33337 19Z" stroke-linecap="round" stroke-linejoin="round" />
 							<path d="M8.33337 11C6.67647 11 5.33337 9.6569 5.33337 8C5.33337 6.34315 6.67647 5 8.33337 5C9.99027 5 11.3334 6.34315 11.3334 8C11.3334 9.6569 9.99027 11 8.33337 11Z" stroke-linecap="round" stroke-linejoin="round" />
 						</svg>
+						<p>{event.location}</p>
 					</div>
-					<div class="event--buttons">
-						<button class="accept">Accept</button>
-						<button class="decline">Decline</button>
-					</div>
+					<button>Accept</button>
 				</div>
 			{/each}
 		</div>
@@ -114,7 +113,7 @@
 		<h5>Statuses</h5>
 		<form class="statuses--set" method="POST" action="?/setStatus">
 			<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.8QRdhC_5aU7Z-uedJmXDowHaHa%26pid%3DApi&f=1&ipt=3d5250e2bac8fa86b82b4318f5945815fd1bfa072c0af5880d01d6da6d9b4664&ipo=images" alt="" />
-			<!-- <Input placeholder="My status..."></Input> -->
+			<Input placeholder="My status..." />
 		</form>
 		<hr>
 		<div class="statuses--list">
@@ -134,7 +133,7 @@
 		display: flex;
 		justify-content: space-between;
 		padding-inline: var(--padding-900);
-		gap:  4rem;
+		gap: 6rem;
 	}
 
 	/* tasks */
@@ -175,7 +174,7 @@
 	.tasks--list::-webkit-scrollbar {
 		width: .5em;
 	}
-	
+
 	.tasks--list::-webkit-scrollbar-thumb {
 		background-image: linear-gradient(to bottom, var(--accent), var(--text));
 		background-color: var(--text);
@@ -244,20 +243,82 @@
 		flex-direction: column;
 		gap: 1rem;
 		color: var(--text);
-	}
-
-	.events--list {
-		display: flex;
-		flex-direction: column;
+		flex-grow: 1;
 	}
 
 	.event {
-		display: grid;
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		/* display: grid;
 		grid-auto-flow: column;
-		grid-template-columns: 2% repeat(4, 1fr);
-		white-space: nowrap;
+		grid-template-columns: repeat(4, 25%);
+		align-items: center; */
+		gap: 1rem;
+		padding: var(--padding-400);
+		padding-right: 0;
 	}
 
+	.event p {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.event__color {
+		position: absolute;
+		width: .5rem;
+		height: 80%;
+	}
+
+	.event__name {
+		padding-left: var(--padding-500);
+	}
+
+	.event--time {
+		display: flex;
+		gap: .75rem;
+	}
+
+	.event--location {
+		display: flex;
+		gap: .75rem;
+	}
+
+	.event button {
+		padding: var(--padding-100) var(--padding-400);
+		border-radius: var(--br);
+		border: none;
+		color: white;
+		background-image: linear-gradient(to bottom, var(--primary), var(--accent));
+		cursor: pointer;
+	}
+
+	.event svg {
+		width: 1rem;
+		aspect-ratio: 1;
+		stroke: var(--text);
+		stroke-width: 2px;
+	}
+
+	/* event colors */
+	.red {
+		background-image: linear-gradient(to bottom, #ff392e, #ff9994);
+	}
+
+	.green {
+		background-image: linear-gradient(to bottom, #4ed34e, #a0e7a0);
+	}
+
+	.blue {
+		background-image: linear-gradient(to bottom, #8eafbc, #cedde2);
+		/* background-image: linear-gradient(to bottom, var(--accent), var(--primary)); */
+	}
+
+	.yellow {
+		background-image: linear-gradient(to bottom, #fcfc64, #fefec8);
+	}
 
 	/* statuses */
 	.statuses {

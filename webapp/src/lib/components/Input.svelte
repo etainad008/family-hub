@@ -24,11 +24,12 @@
 
 <style>
 	input {
+		width: 100%;
 		padding: var(--padding-100) var(--padding-400);
-		background-color: var(--background-color, var(--secondary));
+		background-color: var(--text, var(--secondary));
 		border: none;
 		border-radius: var(--br);
-		color: var(--color, var(--text));
+		color: var(--background, var(--text));
 		font-size: var(--p);
 	}
 
@@ -39,5 +40,10 @@
 	input:-webkit-autofill {
 		box-shadow: inset 0 0 1rem 2rem var(--secondary);
 		-webkit-text-fill-color: var(--text);
+	}
+
+	input:-webkit-autofill {
+		box-shadow: inset 0 0 1rem 2rem var(--text);
+		-webkit-text-fill-color: var(--background);
 	}
 </style>
