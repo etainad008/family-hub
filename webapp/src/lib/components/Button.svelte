@@ -9,19 +9,6 @@
 	export let style = null;
 </script>
 
-<!-- <svelte:element
-	this={link ? 'a' : 'button'}
-	class="button"
-	class:hoverable
-	class:shadow
-	style:background-color="var(--{background}, {background})"
-	style:color="var(--{color}, {color})"
-	style="{style}; {shadow ? `--shadow: 0 0 ${shadow} var(--${background}, ${background});` : ''}"
-	href={link}
->
-	<svelte:element this={size}><slot /></svelte:element>
-</svelte:element> -->
-
 <svelte:element
 	this={link ? 'a' : 'button'}
 	class="button"

@@ -20,26 +20,26 @@
 		</header>
 		<div class="login--form">
 			<div class="fields">
-				<label>
+				<div class="username">
 					<h3>Username</h3>
-					<input
+					<Input
 						type="text"
 						name="username"
 						placeholder="username"
 						autocomplete="username"
 						required
-					/>
-				</label>
-				<label>
+					 />
+				</div>
+				<div class="password">
 					<h3>Password</h3>
-					<input
+					<Input
 						type="password"
 						name="password"
 						placeholder="password"
 						autocomplete="current-password"
 						required
 					/>
-				</label>
+				</div>
 				<Button style="margin-top: 1.5rem">Login</Button>
 			</div>
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 293" fill="none">
@@ -83,7 +83,6 @@
 		flex-grow: 1;
 		height: 2.5rem;
 		border-radius: var(--br);
-		/* background-color: var(--text); */
 		background-image: linear-gradient(to left, var(--secondary), var(--primary));
 	}
 
@@ -91,7 +90,7 @@
 		position: relative;
 		background-color: var(--primary);
 		border-radius: var(--br);
-		padding: var(--padding-600) var(--padding-800) var(--padding-800);
+		padding: var(--padding-500) var(--padding-800) var(--padding-800);
 		overflow: hidden;
 	}
 
@@ -105,23 +104,18 @@
 		translate: 50% 0;
 		height: 104%;
 	}
-	
-	.fields {
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
-	}
 
-	label {
+	.fields > * {
+		padding-block: .75rem;
 		color: var(--background);
+		width: 70%
 	}
 
-	input {
+	/* input {
 		width: 60%;
 		padding: var(--padding-100) var(--padding-400);
 		background-color: var(--secondary);
 		border: none;
-		/* border: 2px solid var(--secondary); */
 		border-radius: var(--br);
 		color: var(--text);
 		font-size: var(--p);
@@ -130,5 +124,5 @@
 	input:-webkit-autofill {
 		box-shadow: inset 0 0 1rem 2rem var(--secondary);
 		-webkit-text-fill-color: var(--text);
-	}
+	} */
 </style>
