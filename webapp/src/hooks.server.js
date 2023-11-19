@@ -1,6 +1,11 @@
 /** @type {import('@sveltejs/kit').Handle} */
 export async function handle({ event, resolve }) {
-	const theme = event.cookies.get('theme');
+	let theme = event.cookies.get('theme');
+
+	if(!theme) {
+		theme = "dark";
+		event.cookies.set("theme", "dark", { path: "/" });
+	}
 
 	if (theme) {
 		return await resolve(event, {

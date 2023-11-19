@@ -1,6 +1,10 @@
 /** @type {import('./$types').LayoutServerLoad} */
 export async function load({ cookies }) {
-	const theme = cookies.get('theme');
+	let theme = cookies.get('theme');
+
+	if(!theme) {
+		theme = "dark";
+	}
 
 	return {
 		theme: theme
