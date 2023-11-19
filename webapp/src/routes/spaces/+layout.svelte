@@ -47,9 +47,7 @@
 			</svg>
 		</section>
 	</div>
-
 	<hr />
-
 	<div class="family">
 		<label for="family"><h4>{family}</h4></label>
 		<select name="family" id="family" bind:value={family}>
