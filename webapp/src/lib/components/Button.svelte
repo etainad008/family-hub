@@ -1,5 +1,7 @@
 <script>
 	export let size = 'p';
+	export let type;
+	export let name;
 	export let background = 'secondary';
 	export let color = 'text';
 	export let link = null;
@@ -12,6 +14,8 @@
 <svelte:element
 	this={link ? 'a' : 'button'}
 	class="button"
+	type={type && link ? type : null}
+	{name}
 	class:hoverable
 	class:shadow
 	style:background-color="var(--{background}, {background})"

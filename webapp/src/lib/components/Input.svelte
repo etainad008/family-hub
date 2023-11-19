@@ -1,5 +1,5 @@
 <script>
-	import { createEventDispatcher } from "svelte";
+	import { createEventDispatcher } from 'svelte';
 
 	const dispatch = createEventDispatcher();
 
@@ -11,6 +11,7 @@
 	export let required = false;
 	export let minlength = null;
 	export let maxlength = null;
+	export let rows = '2';
 
 	const attributes = {
 		type,
@@ -24,10 +25,14 @@
 	};
 </script>
 
-<input {...attributes} on:focusout={() => dispatch('focusout')} />
+{#if type == 'textarea'}
+	<textarea class="input" {...attributes} {rows} />
+{:else}
+	<input class="input" {...attributes} on:focusout={() => dispatch('focusout')} />
+{/if}
 
 <style>
-	input {
+	.input {
 		width: 100%;
 		padding: var(--padding-100) var(--padding-400);
 		background-color: var(--text, var(--secondary));
@@ -37,16 +42,16 @@
 		font-size: var(--p);
 	}
 
-	input::placeholder {
+	.input::placeholder {
 		display: none;
 	}
 
-	input:-webkit-autofill {
+	.input:-webkit-autofill {
 		box-shadow: inset 0 0 1rem 2rem var(--secondary);
 		-webkit-text-fill-color: var(--text);
 	}
 
-	input:-webkit-autofill {
+	.input:-webkit-autofill {
 		box-shadow: inset 0 0 1rem 2rem var(--text);
 		-webkit-text-fill-color: var(--background);
 	}
