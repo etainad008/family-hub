@@ -1,7 +1,7 @@
 <script>
-	import moment from "moment";
+	import moment from 'moment';
 
-	import { enhance } from "$app/forms";
+	import { enhance } from '$app/forms';
 
 	import Input from '$lib/components/Input.svelte';
 	import Button from '$lib/components/Button.svelte';
@@ -66,28 +66,28 @@
 
 	let doneFilter = false;
 	let iAssignedFilter = false;
-	let sortByFilter = "deadline";
+	let sortByFilter = 'deadline';
 
 	function sortByKey(arr, key) {
 		let compareFn = undefined;
 		let arrCopy = [...arr];
 
-		console.log("sorting by: " + sortByFilter);
+		console.log('sorting by: ' + sortByFilter);
 
-		if(key == "name") {
-			compareFn = (a,b) => {
+		if (key == 'name') {
+			compareFn = (a, b) => {
 				return a.name.localeCompare(b.name);
-			}
-		} else if(key == "deadline") {
-			compareFn = (a,b) => {
+			};
+		} else if (key == 'deadline') {
+			compareFn = (a, b) => {
 				return moment(a.deadline).isBefore(b.deadline) ? -1 : 1;
-			}
-		} else if(key == "assigner") {
-			compareFn = (a,b) => {
-				return a.assigner.localeCompare(b.assigner)
-			}
+			};
+		} else if (key == 'assigner') {
+			compareFn = (a, b) => {
+				return a.assigner.localeCompare(b.assigner);
+			};
 		}
-		
+
 		return arrCopy.sort(compareFn);
 	}
 </script>
@@ -101,23 +101,18 @@
 		<h5>Tasks</h5>
 		<header>
 			<div class="tasks--assigned--to">
-				<button
-					class:selected={!iAssignedFilter}
-					on:click={() => iAssignedFilter = false}
-				>
+				<button class:selected={!iAssignedFilter} on:click={() => (iAssignedFilter = false)}>
 					<p>assigned to me</p>
 				</button>
-				<button
-					class:selected={iAssignedFilter}
-					on:click={() => iAssignedFilter = true}
-				>
+				<button class:selected={iAssignedFilter} on:click={() => (iAssignedFilter = true)}>
 					<p>I assigned</p>
 				</button>
 			</div>
 			<div class="tasks--controls">
 				<label class="tasks--sort--by">
-				sort by
-					<select name="sort-by"
+					sort by
+					<select
+						name="sort-by"
 						bind:value={sortByFilter}
 						on:change={sortByKey(tasks, sortByFilter)}
 					>
@@ -152,15 +147,22 @@
 						</div>
 						<div class="task--deadline">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="none">
-								<path d="M9 5V9H12.5M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z" stroke-linecap="round" />
+								<path
+									d="M9 5V9H12.5M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z"
+									stroke-linecap="round"
+								/>
 							</svg>
-							<p>{moment(task.deadline).format("ddd, MMM Do YYYY - h:mm A")}</p>
+							<p>{moment(task.deadline).format('ddd, MMM Do YYYY - h:mm A')}</p>
 						</div>
-						<form action="?/markTaskDone" method="POST" use:enhance={({ formData }) => {
-							formData.append("taskId", task.id)
-						}}>
+						<form
+							action="?/markTaskDone"
+							method="POST"
+							use:enhance={({ formData }) => {
+								formData.append('taskId', task.id);
+							}}
+						>
 							<button name="done" value={task.id}>
-								Mark as {task.isDone ? "undone" : "done"}
+								Mark as {task.isDone ? 'undone' : 'done'}
 							</button>
 						</form>
 					</div>
@@ -282,12 +284,12 @@
 		border: none;
 		color: var(--text);
 	}
-	
+
 	.tasks--done {
 		cursor: pointer;
 	}
 
-	.tasks--done input[type="checkbox"] {
+	.tasks--done input[type='checkbox'] {
 		appearance: none;
 		width: 1rem;
 		aspect-ratio: 1/1;
@@ -297,14 +299,14 @@
 		cursor: pointer;
 	}
 
-	.tasks--done input[type="checkbox"]:checked {
+	.tasks--done input[type='checkbox']:checked {
 		background-color: var(--accent);
 	}
 
 	.tasks--list {
 		margin-left: var(--padding-400);
 	}
-	
+
 	.task {
 		position: relative;
 		display: flex;
@@ -321,7 +323,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
-	
+
 	.task svg {
 		position: relative;
 		width: 1rem;
@@ -329,15 +331,15 @@
 		stroke: var(--text);
 		stroke-width: 2px;
 	}
-	
+
 	.task__color {
 		position: absolute;
 		left: 0;
-		width: .5rem;
+		width: 0.5rem;
 		height: 80%;
 		background-image: linear-gradient(to bottom, var(--accent), var(--primary));
 	}
-	
+
 	.task__name {
 		max-width: 24ch;
 		font-weight: 500;
