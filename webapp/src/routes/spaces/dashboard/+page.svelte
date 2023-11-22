@@ -152,7 +152,7 @@
 	.tasks {
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: var(--padding-400);
 		color: var(--text);
 	}
 
@@ -253,9 +253,13 @@
 	.events {
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: var(--padding-400);
 		color: var(--text);
 		flex-grow: 1;
+	}
+
+	.events--list {
+		margin-left: var(--padding-400);
 	}
 
 	.event {
@@ -263,8 +267,9 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		gap: 1rem;
-		padding: var(--padding-400);
+		flex-wrap: wrap;
+		gap: var(--padding-400);
+		padding: var(--padding-500);
 		padding-right: 0;
 	}
 
@@ -276,22 +281,19 @@
 
 	.event__color {
 		position: absolute;
+		left: 0;
 		width: .5rem;
 		height: 80%;
 	}
 
-	.event__name {
-		padding-left: var(--padding-500);
-	}
-
 	.event--time {
 		display: flex;
-		gap: .75rem;
+		gap: var(--padding-300);
 	}
-
+	
 	.event--location {
 		display: flex;
-		gap: .75rem;
+		gap: var(--padding-300);
 	}
 
 	.event button {
@@ -332,7 +334,7 @@
 	.statuses {
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: var(--padding-400);
 		color: var(--text);
 	}
 
@@ -346,7 +348,7 @@
 	.statuses--set {
 		display: flex;
 		align-items: center;
-		gap: 1rem;
+		gap: var(--padding-400);
 	}
 
 	.statuses--set > button {

@@ -40,6 +40,8 @@
 		border-radius: var(--br);
 		color: var(--background, var(--text));
 		font-size: var(--p);
+		overflow: hidden auto;
+		resize: none;
 	}
 
 	.input::placeholder {
