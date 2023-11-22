@@ -67,7 +67,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1.25rem;
-		padding: 0 var(--padding-900) var(--padding-600);
+		padding: 0 var(--padding-900) var(--padding-400);
 	}
 
 	.top--header {
@@ -177,10 +177,10 @@
 	}
 
 	.family::after {
-		content: "";
+		content: '';
 		position: absolute;
-		inset: auto 0 .5em 0 ;
-		height: .25em;
+		inset: auto 0 0.5em 0;
+		height: 0.25em;
 		background-image: linear-gradient(to right, var(--accent), var(--primary));
 		transition: transform 150ms cubic-bezier(1, 0, 0, 1);
 		transform-origin: left;
