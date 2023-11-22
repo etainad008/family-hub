@@ -1,53 +1,94 @@
 <script>
-	import { enhance } from "$app/forms";
+	import { enhance } from '$app/forms';
 
-	import Input from "$lib/components/Input.svelte";
-	
+	import Input from '$lib/components/Input.svelte';
+
 	/** @type {import('./$types').PageData} */
 	export let data;
 
 	let members = [
 		{
 			id: 1,
-			name: "Benjamin",
-			status: "at home",
+			name: 'Benjamin',
+			status: 'at home'
 		},
 		{
 			id: 2,
-			name: "Mishi",
-			status: "at work",
+			name: 'Mishi',
+			status: 'at work'
+		},
+		{
+			id: 3,
+			name: 'Mishi',
+			status: 'at work'
+		},
+		{
+			id: 4,
+			name: 'Mishi',
+			status: 'at work'
+		},
+		{
+			id: 5,
+			name: 'Mishi',
+			status: 'at work'
 		}
-	]
+	];
 
 	let tasks = [
 		{
 			id: 1,
-			name: "Do Homework",
-			assigner: "me",
-			description: "Do math homework on page 82",
+			name: 'Do Homework',
+			assigner: 'me',
+			description: 'Do math homework on page 82'
 		},
 		{
 			id: 2,
-			name: "Clean room",
-			assigner: "mom",
-			description: "Clean the room now!!",
+			name: 'Clean room',
+			assigner: 'mom',
+			description: 'Clean the room now!!'
 		},
+		{
+			id: 3,
+			name: 'Clean room',
+			assigner: 'mom',
+			description: 'Clean the room now!!'
+		},
+		{
+			id: 4,
+			name: 'Clean room',
+			assigner: 'mom',
+			description: 'Clean the room now!!'
+		}
 	];
 
 	let events = [
 		{
 			id: 1,
-			name: "Family Gathering",
-			time: "Friday, 12:15AM",
-			location: "Grandma",
-			color: "red",
+			name: 'Family Gathering',
+			time: 'Friday, 12:15AM',
+			location: 'Grandma',
+			color: 'red'
 		},
 		{
 			id: 2,
-			name: "Basketball",
-			time: "Sunday, 3:00PM",
-			location: "Basketball Field",
-			color: "yellow",
+			name: 'Basketball',
+			time: 'Sunday, 3:00PM',
+			location: 'Basketball Field',
+			color: 'yellow'
+		},
+		{
+			id: 3,
+			name: 'Basketball',
+			time: 'Sunday, 3:00PM',
+			location: 'Basketball Field',
+			color: 'green'
+		},
+		{
+			id: 4,
+			name: 'Basketball',
+			time: 'Sunday, 3:00PM',
+			location: 'Basketball Field',
+			color: 'blue'
 		}
 	];
 
@@ -55,10 +96,10 @@
 	let setStatusButton;
 
 	function preventFormReset() {
-        return async ({ update }) => {
-            await update({ reset: false });
-        }
-    }
+		return async ({ update }) => {
+			await update({ reset: false });
+		};
+	}
 </script>
 
 <svelte:head>
@@ -71,12 +112,17 @@
 		<div class="tasks--new">
 			<button title="Add new task">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
-					<path d="M10 2V10V18M18 10H2" stroke-linecap="round" stroke-linejoin="round" fill="blue" />
+					<path
+						d="M10 2V10V18M18 10H2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						fill="blue"
+					/>
 				</svg>
 			</button>
 			<p>Add a new task</p>
 		</div>
-		<hr>
+		<hr />
 		<div class="tasks--list">
 			{#each tasks as task (task.id)}
 				<div class="task">
@@ -96,22 +142,33 @@
 	</article>
 	<article class="events">
 		<h5>Upcoming Events</h5>
-		<hr>
+		<hr />
 		<div class="events--list">
 			{#each events as event (event.id)}
 				<div class="event">
-					<div class="event__color {event.color}"></div>
+					<div class="event__color {event.color}" />
 					<p class="event__name">{event.name}</p>
 					<div class="event--time">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="none">
-							<path d="M9 5V9H12.5M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z" stroke-linecap="round" />
+							<path
+								d="M9 5V9H12.5M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z"
+								stroke-linecap="round"
+							/>
 						</svg>
 						<p>{event.time}</p>
 					</div>
 					<div class="event--location">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 20" fill="none">
-							<path d="M8.33337 19C4.83337 15.4 1.33337 12.1764 1.33337 8.2C1.33337 4.22355 4.46737 1 8.33337 1C12.1994 1 15.3334 4.22355 15.3334 8.2C15.3334 12.1764 11.8334 15.4 8.33337 19Z" stroke-linecap="round" stroke-linejoin="round" />
-							<path d="M8.33337 11C6.67647 11 5.33337 9.6569 5.33337 8C5.33337 6.34315 6.67647 5 8.33337 5C9.99027 5 11.3334 6.34315 11.3334 8C11.3334 9.6569 9.99027 11 8.33337 11Z" stroke-linecap="round" stroke-linejoin="round" />
+							<path
+								d="M8.33337 19C4.83337 15.4 1.33337 12.1764 1.33337 8.2C1.33337 4.22355 4.46737 1 8.33337 1C12.1994 1 15.3334 4.22355 15.3334 8.2C15.3334 12.1764 11.8334 15.4 8.33337 19Z"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+							<path
+								d="M8.33337 11C6.67647 11 5.33337 9.6569 5.33337 8C5.33337 6.34315 6.67647 5 8.33337 5C9.99027 5 11.3334 6.34315 11.3334 8C11.3334 9.6569 9.99027 11 8.33337 11Z"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
 						</svg>
 						<p>{event.location}</p>
 					</div>
@@ -122,16 +179,30 @@
 	</article>
 	<article class="statuses">
 		<h5>Statuses</h5>
-		<form class="statuses--set" method="POST" action="?/setStatus" bind:this={setStatusForm} use:enhance={preventFormReset}>
-			<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.HLuY60jzx5puuKjbqmWRRwHaEK%26pid%3DApi&f=1&ipt=81902346e97e5047450710dbf2dc44a617d314d0fed95f8335f2349afb971699&ipo=images" alt="my profile" />
+		<form
+			class="statuses--set"
+			method="POST"
+			action="?/setStatus"
+			bind:this={setStatusForm}
+			use:enhance={preventFormReset}
+		>
+			<img
+				src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.HLuY60jzx5puuKjbqmWRRwHaEK%26pid%3DApi&f=1&ipt=81902346e97e5047450710dbf2dc44a617d314d0fed95f8335f2349afb971699&ipo=images"
+				alt="my profile"
+			/>
 			<Input name="status" placeholder="My status..." on:focusout={() => setStatusButton.click()} />
-			<button bind:this={setStatusButton}></button> <!-- this button is invisible -->
+			<button bind:this={setStatusButton} />
+			<!-- this button is invisible -->
 		</form>
-		<hr>
+		<hr />
 		<div class="statuses--list">
 			{#each members as member (member.id)}
 				<div class="status">
-					<img class="status__image" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.8QRdhC_5aU7Z-uedJmXDowHaHa%26pid%3DApi&f=1&ipt=3d5250e2bac8fa86b82b4318f5945815fd1bfa072c0af5880d01d6da6d9b4664&ipo=images" alt="" />
+					<img
+						class="status__image"
+						src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.8QRdhC_5aU7Z-uedJmXDowHaHa%26pid%3DApi&f=1&ipt=3d5250e2bac8fa86b82b4318f5945815fd1bfa072c0af5880d01d6da6d9b4664&ipo=images"
+						alt=""
+					/>
 					<p class="status__name">{member.name}</p>
 					<p class="status__status">{member.status}</p>
 				</div>
@@ -159,22 +230,22 @@
 	.tasks--new {
 		display: flex;
 		align-items: center;
-		gap: .75rem;
+		gap: 0.75rem;
 		white-space: nowrap;
 	}
 
 	.tasks--new > button {
 		min-width: 2.5em;
-		padding: .5em;
+		padding: 0.5em;
 		background-color: transparent;
-		border: .25em solid var(--accent);
+		border: 0.25em solid var(--accent);
 		border-radius: var(--br);
 		cursor: pointer;
 	}
 
 	.tasks--new > button > svg {
 		stroke: var(--text);
-		stroke-width: .25em;
+		stroke-width: 0.25em;
 	}
 
 	.tasks--list {
@@ -184,7 +255,7 @@
 	}
 
 	.tasks--list::-webkit-scrollbar {
-		width: .5em;
+		width: 0.5em;
 	}
 
 	.tasks--list::-webkit-scrollbar-thumb {
@@ -205,23 +276,24 @@
 	.task--details {
 		flex-grow: 1;
 		display: grid;
-		grid-template-areas: "name assigner"
-							 "desc desc";
-		gap: .25em .5em;
+		grid-template-areas:
+			'name assigner'
+			'desc desc';
+		gap: 0.25em 0.5em;
 	}
-	
+
 	.task__name {
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
 	}
-	
+
 	.task__assigner {
 		color: var(--accent);
 		font-size: var(--fs-300);
 		justify-self: end;
 	}
-	
+
 	.task__description {
 		max-width: 28ch;
 		overflow: hidden;
@@ -244,9 +316,9 @@
 	}
 
 	.task > button > svg {
-		width: .75rem;
+		width: 0.75rem;
 		stroke: white;
-		stroke-width: .25em;
+		stroke-width: 0.25em;
 	}
 
 	/* events */
@@ -259,7 +331,18 @@
 	}
 
 	.events--list {
-		margin-left: var(--padding-400);
+		max-height: 20rem;
+		overflow: hidden auto;
+	}
+
+	.events--list::-webkit-scrollbar {
+		width: 0.5em;
+	}
+
+	.events--list::-webkit-scrollbar-thumb {
+		background-image: linear-gradient(to bottom, var(--accent), var(--text));
+		background-color: var(--text);
+		border-radius: 100vw;
 	}
 
 	.event {
@@ -270,7 +353,6 @@
 		flex-wrap: wrap;
 		gap: var(--padding-400);
 		padding: var(--padding-500);
-		padding-right: 0;
 	}
 
 	.event p {
@@ -282,7 +364,7 @@
 	.event__color {
 		position: absolute;
 		left: 0;
-		width: .5rem;
+		width: 0.5rem;
 		height: 80%;
 	}
 
@@ -290,7 +372,7 @@
 		display: flex;
 		gap: var(--padding-300);
 	}
-	
+
 	.event--location {
 		display: flex;
 		gap: var(--padding-300);
@@ -343,6 +425,18 @@
 		flex-direction: column;
 		gap: 1.5rem;
 		padding-left: var(--padding-400);
+		max-height: 16rem;
+		overflow: hidden auto;
+	}
+
+	.statuses--list::-webkit-scrollbar {
+		width: 0.5em;
+	}
+
+	.statuses--list::-webkit-scrollbar-thumb {
+		background-image: linear-gradient(to bottom, var(--accent), var(--text));
+		background-color: var(--text);
+		border-radius: 100vw;
 	}
 
 	.statuses--set {
@@ -378,8 +472,9 @@
 	.status__name {
 		grid-column: 2;
 	}
-	
-	.status__status { /* Shush I know */
+
+	.status__status {
+		/* Shush I know */
 		width: fit-content;
 		font-size: var(--fs-300);
 		background-image: linear-gradient(to left, var(--accent), var(--secondary));

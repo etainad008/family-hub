@@ -40,21 +40,18 @@
 			deadline: '2015-09-08T16:02:17+03:00',
 			isDone: false,
 			isPreset: false
-		}
-	];
-
-	let tasks2 = [
-		{
-			id: 1,
-			name: 'Do Homework',
-			assigner: 'me',
-			description: 'Do math homework on page 82',
-			deadline: '2016s-09-08T08:02:17+03:00',
-			isDone: true,
-			isPreset: true
 		},
 		{
-			id: 2,
+			id: 3,
+			name: 'Clean room',
+			assigner: 'mom',
+			description: 'Clean the room now!!',
+			deadline: '2015-09-08T16:02:17+03:00',
+			isDone: false,
+			isPreset: false
+		},
+		{
+			id: 4,
 			name: 'Clean room',
 			assigner: 'mom',
 			description: 'Clean the room now!!',
@@ -283,6 +280,7 @@
 		background-color: var(--background);
 		border: none;
 		color: var(--text);
+		cursor: pointer;
 	}
 
 	.tasks--done {
@@ -305,6 +303,20 @@
 
 	.tasks--list {
 		margin-left: var(--padding-400);
+		max-height: 20rem;
+		overflow: hidden auto;
+		-webkit-mask-image: linear-gradient(black 97.5%, transparent);
+		mask-image: linear-gradient(black 97.5%, transparent);
+	}
+
+	.tasks--list::-webkit-scrollbar {
+		width: 0.5em;
+	}
+
+	.tasks--list::-webkit-scrollbar-thumb {
+		background-image: linear-gradient(to bottom, var(--accent), var(--text));
+		background-color: var(--text);
+		border-radius: 100vw;
 	}
 
 	.task {
@@ -315,7 +327,6 @@
 		flex-wrap: wrap;
 		gap: var(--padding-400);
 		padding: var(--padding-500);
-		padding-right: 0;
 	}
 
 	.task p {
