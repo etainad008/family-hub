@@ -58,7 +58,16 @@
 			deadline: '2015-09-08T16:02:17+03:00',
 			isDone: false,
 			isPreset: false
-		}
+		},
+		{
+			id: 5,
+			name: 'Do Homework',
+			assigner: 'me',
+			description: 'Do math homework on page 82',
+			deadline: '2015-09-08T08:02:17+03:00',
+			isDone: false,
+			isPreset: false
+		},
 	];
 
 	let doneFilter = false;
@@ -232,6 +241,10 @@
 		justify-content: space-between;
 		padding-inline: var(--padding-900);
 		gap: 8rem;
+		max-height: 34rem;
+		overflow: hidden;
+		-webkit-mask-image: linear-gradient(black 97.5%, transparent);
+		mask-image: linear-gradient(black 97.5%, transparent);
 	}
 
 	/* tasks */
@@ -303,10 +316,7 @@
 
 	.tasks--list {
 		margin-left: var(--padding-400);
-		max-height: 20rem;
 		overflow: hidden auto;
-		-webkit-mask-image: linear-gradient(black 97.5%, transparent);
-		mask-image: linear-gradient(black 97.5%, transparent);
 	}
 
 	.tasks--list::-webkit-scrollbar {

@@ -58,7 +58,26 @@
 			name: 'Clean room',
 			assigner: 'mom',
 			description: 'Clean the room now!!'
-		}
+		},
+		{
+			id: 5,
+			name: 'Clean room',
+			assigner: 'mom',
+			description: 'Clean the room now!!'
+		},
+		{
+			id: 6,
+			name: 'Clean room',
+			assigner: 'mom',
+			description: 'Clean the room now!!'
+		},
+		{
+			id: 7,
+			name: 'Clean room',
+			assigner: 'mom',
+			description: 'Clean the room now!!'
+		},
+		
 	];
 
 	let events = [
@@ -217,6 +236,10 @@
 		justify-content: space-between;
 		padding-inline: var(--padding-900);
 		gap: 6rem;
+		max-height: 34rem;
+		overflow: hidden;
+		-webkit-mask-image: linear-gradient(black 97.5%, transparent);
+		mask-image: linear-gradient(black 97.5%, transparent);
 	}
 
 	/* tasks */
@@ -250,7 +273,6 @@
 
 	.tasks--list {
 		direction: rtl;
-		max-height: 16rem;
 		overflow: hidden auto;
 	}
 
@@ -331,7 +353,6 @@
 	}
 
 	.events--list {
-		max-height: 20rem;
 		overflow: hidden auto;
 	}
 
@@ -424,8 +445,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1.5rem;
-		padding-left: var(--padding-400);
-		max-height: 16rem;
+		padding: var(--padding-400);
 		overflow: hidden auto;
 	}
 
@@ -473,12 +493,12 @@
 		grid-column: 2;
 	}
 
-	.status__status {
-		/* Shush I know */
+	.status__status { /* Shush I know */
 		width: fit-content;
 		font-size: var(--fs-300);
-		background-image: linear-gradient(to left, var(--accent), var(--secondary));
+		background-image: linear-gradient(to right, var(--accent), var(--accent));
 		border-radius: 0 100vw 100vw 0;
 		padding-inline: var(--padding-100) var(--padding-400);
+		color: white;
 	}
 </style>
