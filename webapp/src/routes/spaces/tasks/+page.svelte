@@ -274,7 +274,6 @@
 	.tasks--assigned--to > button {
 		background-color: transparent;
 		border: none;
-		padding-block: var(--padding-100);
 		cursor: pointer;
 		color: inherit;
 	}
