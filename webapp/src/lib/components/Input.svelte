@@ -33,6 +33,7 @@
 
 <style>
 	.input {
+		position: relative;
 		width: 100%;
 		padding: var(--padding-100) var(--padding-400);
 		background-color: var(--text, var(--secondary));
@@ -56,5 +57,20 @@
 	.input:-webkit-autofill {
 		box-shadow: inset 0 0 1rem 2rem var(--text);
 		-webkit-text-fill-color: var(--background);
+	}
+
+	.input[type*="date"] {
+		overflow: hidden;
+		font-size: var(--fs-300);
+	}
+	
+	.input[type*="date"]::-webkit-calendar-picker-indicator {
+		position: absolute;
+		inset: 0;
+		margin: auto;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		cursor: pointer;
 	}
 </style>

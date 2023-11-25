@@ -13,6 +13,7 @@
 		position: relative;
 		width: 100%;
 		height: 1rem;
+		border: 1px solid var(--accent);
 		border-radius: 100vw;
 		overflow: hidden;
 	}
